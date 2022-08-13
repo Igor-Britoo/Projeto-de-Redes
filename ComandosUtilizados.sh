@@ -41,4 +41,3 @@
 	
 	#Terminal do Roteador 1
 		
-	
