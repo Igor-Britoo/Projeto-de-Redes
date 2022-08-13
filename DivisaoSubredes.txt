@@ -1,0 +1,43 @@
+(10.0.0.0 - 10.0.11.0) Reservado
+
+Rede 500 hosts
+00001010.00000000.00001100.00000000 (IP) 10.0.12.0
+11111111.11111111.11111110.00000000 (Máscara) 255.255.254.0
+00001010.00000000.00001100.00000000 (Primeiro IP da rede) 10.0.12.0
+00001010.00000000.00001101.11111111 (Último IP da rede) 10.0.13.255
+
+Rede 100 hosts
+00001010.00000000.00001110.00000000 (IP) 10.0.14.0
+11111111.11111111.11111111.10000000 (Máscara) 255.255.254.128
+00001010.00000000.00001101.00000000 (Primeiro IP da rede) 10.0.14.0
+00001010.00000000.00001101.01111111 (Último IP da rede) 10.0.14.127
+
+Rede 50 hosts
+00001010.00000000.00001101.10000000 (IP) 10.0.14.128
+11111111.11111111.11111111.11000000 (Máscara) 255.255.254.192
+00001010.00000000.00001101.10000000 (Primeiro IP da rede) 10.0.14.128
+00001010.00000000.00001101.10111111 (Último IP da rede) 10.0.14.191
+
+
+*OBS:
+O intervalo de IP's reservados deveria ser (10.0.0.0 - 10.0.12.0), porém ocorreu um problema com
+o tamanho da máscara da rede de 500 Hosts, que após o AND binário com o IP 10.0.13.0 retornava o 
+IP 10.0.12.0 como primeiro IP da rede.
+
+AND binário:
+00001010.00000000.00001101.00000000 IP (10.0.13.0)
+11111111.11111111.11111110.00000000 Máscara (255.255.254.0)
+-----------------------------------
+00001010.00000000.00001100.00000000 Primeiro IP da rede (10.0.12.0)
+
+Caso considerássemos o IP 10.0.13.0 ao invés do 10.0.12.0, não seria possível definir uma rede de
+500 hosts, pois o bit menos significante do terceiro octeto seria utilizado para definir o valor 13
+e, por conta disso, a maior máscara possivel de ser utilizada seria a de 8 bits (255.255.255.0)
+que define 256 hosts.
+
+
+
+
+
+
+
