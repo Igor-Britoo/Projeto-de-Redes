@@ -59,6 +59,23 @@
 			network 10.0.14.0 255.255.255.128 	 		#define o IP e a mascara de subrede
 			default router 10.0.14.1					#define o gateway
 			exit
+			
+		#Define sub-interface para VLAN 25
+		
+			interface f1/1.25 							#acessa sub-interface referente a VLAN 25
+			encapsulation dot1Q 25              		#define o protocolo 802.1Q para a sub-interface para diferenciar as vlans
+			ip address 10.0.14.129 255.255.255.192  	#define o ip(gateway definido anteriormente) e mascara da sub-interface
+			no shutdown									#faz com que a interface nao desligue
+			exit
+		
+		#Define sub-interface para VLAN 35
+		
+			interface f1/1.35 							#acessa sub-interface referente a VLAN 25
+			encapsulation dot1Q 35              		#define o protocolo 802.1Q para a sub-interface
+			ip address 10.0.14.1 255.255.255.128  		#define o ip(gateway definido anteriormente) e mascara da sub-interface
+			no shutdown									#faz com que a interface nao desligue
+			exit
+		
 		
 		exit 		#sai das configuracoes
 		wr 			#salva configuracoes
