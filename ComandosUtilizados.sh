@@ -77,6 +77,11 @@
 			no shutdown						#faz com que a interface nao desligue
 			exit
 		
+		#Configura a interface que engloba as sub-interfaces para não desligar
+			interface f1/1			#acessa a interface f1/1
+			no shutdown			#faz com que a interface nao desligue
+			exit
+		
 		
 		exit 		#sai das configuracoes
 		wr 		#salva configuracoes
