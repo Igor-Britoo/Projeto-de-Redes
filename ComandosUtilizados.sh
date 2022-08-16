@@ -58,7 +58,7 @@
 		
 			ip dhcp pool 35						#define uma pool de IPs para VLAN 25
 			network 10.0.14.0 255.255.255.128 	 		#define o IP e a mascara de subrede
-			default router 10.0.14.1				#define o gateway
+			default-router 10.0.14.1				#define o gateway
 			exit
 			
 		#Define sub-interface para VLAN 25
