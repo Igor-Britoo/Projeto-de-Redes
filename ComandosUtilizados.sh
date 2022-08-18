@@ -58,7 +58,7 @@
 		
 			ip dhcp pool 35						#define uma pool de IPs para VLAN 25
 			network 10.0.14.0 255.255.255.128 	 		#define o IP e a mascara de subrede
-			default router 10.0.14.1				#define o gateway
+			default-router 10.0.14.1				#define o gateway
 			exit
 			
 		#Define sub-interface para VLAN 25
@@ -77,7 +77,33 @@
 			no shutdown						#faz com que a interface nao desligue
 			exit
 		
+		#Configuracao do nat na interface f1/0
+			int f1/0
+			ip address dhcp
+			ip nat outside
+			no shutdown
+			exit
+			
+		#Configuracao do nat na interface f1/1 e em suas sub interfaces
+			int f1/1
+			ip nat inside
+			no sh
+			exit
+
+			int f1/1.25
+			ip nat inside
+			no sh
+			exit
+
+			int f1/1.35
+			ip nat inside
+			no sh
+			exit
+
+		#Configuracao da lista de acesso
+			access-list 1 permit any
+			ip nat inside source list 1 interface f1/0 overload
 		
-		exit 		#sai das configuracoes
-		wr 		#salva configuracoes
 		
+		exit
+		wr
