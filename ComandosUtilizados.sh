@@ -77,14 +77,19 @@
 			no shutdown						#faz com que a interface nao desligue
 			exit
 		
-		#Configuracao do nat na interface f1/0
+		#Configura a interface que engloba as sub-interfaces para não desligar
+			interface f1/1			#acessa a interface f1/1
+			no shutdown			#faz com que a interface nao desligue
+			exit
+		
+		#Configuracao do NAT na interface f1/0
 			int f1/0
 			ip address dhcp
 			ip nat outside
 			no shutdown
 			exit
 			
-		#Configuracao do nat na interface f1/1 e em suas sub interfaces
+		#Configuracao do NAT na interface f1/1 e em suas sub interfaces
 			int f1/1
 			ip nat inside
 			no sh
@@ -103,7 +108,6 @@
 		#Configuracao da lista de acesso
 			access-list 1 permit any
 			ip nat inside source list 1 interface f1/0 overload
-		
-		
+
 		exit
 		wr
