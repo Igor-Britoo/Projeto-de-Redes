@@ -83,31 +83,31 @@
 			exit
 		
 		#Configuracao do NAT na interface f1/0
-			int f1/0
-			ip address dhcp
-			ip nat outside
-			no shutdown
+			int f1/0			#acessa a interface f1/0
+			ip address dhcp			#configura o DHCP
+			ip nat outside			#traduz endereços globais(outside) para endereços locais(inside)
+			no shutdown			#faz com que a interface nao desligue
 			exit
 			
 		#Configuracao do NAT na interface f1/1 e em suas sub interfaces
-			int f1/1
-			ip nat inside
-			no sh
+			int f1/1			#acessa a interface f1/1
+			ip nat inside			#traduz endereços locais(inside) para endereços globais(outside)
+			no sh				#faz com que a interface nao desligue
 			exit
 
-			int f1/1.25
-			ip nat inside
-			no sh
+			int f1/1.25			#acessa a sub-interface f1/1.25
+			ip nat inside			#traduz endereços locais(inside) para endereços globais(outside)
+			no sh				#faz com que a sub-interface nao desligue
 			exit
 
-			int f1/1.35
-			ip nat inside
-			no sh
+			int f1/1.35			#acessa a sub-interface f1/1.35
+			ip nat inside			#traduz endereços locais(inside) para endereços globais(outside)
+			no sh				#faz com que a sub-interface nao desligue
 			exit
 
 		#Configuracao da lista de acesso
-			access-list 1 permit any
-			ip nat inside source list 1 interface f1/0 overload
+			access-list 1 permit any					#configura uma lista de acesso com permissão de tráfego de pacotes de qualquer host
+			ip nat inside source list 1 interface f1/0 overload		 
 
 		exit
 		wr
