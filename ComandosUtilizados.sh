@@ -111,3 +111,26 @@
 
 		exit
 		wr
+		
+		
+	#Terminal da VLAN 25
+		ping 10.0.14.129			#ping para o gateway(mesma rede)
+		ping 10.0.14.2				#ping para a VLAN 35 (rede diferente)
+		ping 8.8.8.8				#ping para o google (acesso a internet)
+
+		traceroute 10.0.14.129			#traceroute para o gateway(mesma rede)
+		traceroute 10.0.14.2			#traceroute para a VLAN 35(rede diferente)
+		traceroute 8.8.8.8			#traceroute para o google (acesso a internet)
+
+	#Terminal da VLAN 35
+		ping 10.0.14.1				#ping para o gateway(mesma rede)
+		ping 10.0.14.130			#ping para a VLAN 25 (rede diferente)
+		ping 8.8.8.8				#ping para o google (acesso a internet)
+
+		traceroute 10.0.14.1			#traceroute para o gateway(mesma rede)
+		traceroute 10.0.14.130			#traceroute para a VLAN 25(rede diferente)
+		traceroute 8.8.8.8			#traceroute para o google (acesso a internet)
+
+	#Terminal do Roteador 1
+		show arp 				#mostra a tabela arp construída
+
