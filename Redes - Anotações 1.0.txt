@@ -1,0 +1,94 @@
+roteador : camada 3.
+
+Um dispositivo amplamente utilizado na computação em rede moderna, os roteadores conectam os funcionários às redes locais e à Internet, onde ocorrem praticamente todas as atividades empresariais essenciais. Sem roteadores, não poderíamos usar a Internet para nos comunicarmos, coletar informações e aprender, nem para trabalhar em equipe. 
+
+Os roteadores também podem ajudar a garantir mais segurança. O firewall incorporado e o software de filtragem de conteúdo oferecem proteção adicional contra conteúdo indesejado e sites mal-intencionados, sem afetar a experiência online.
+
+Um roteador não serve apenas para transmitir dados ou possibilitar a conexão com a Internet. A maioria dos roteadores permite conectar discos rígidos e usá-los como servidores de compartilhamento de arquivos, ou impressoras que podem ser acessadas por qualquer pessoa na rede.
+
+Etherswitch router: camada 2 e 3.
+
+É a integração do EtherSwitch network e a placa de interface rede no roteador ISR(Integrated service router).
+An IP router, ISR router, or network router, is a networking device that forwards information between digital networks. 
+Cisco ISR: (integrated Service Routers): typically used as internet edge for customers with small/medium networks.
+
+DHCP:
+
+O protocolo DHCP é um protocolo de cliente/servidor que fornece automaticamente um host ip (protocolo IP) com seu endereço IP e outras informações de configuração relacionadas, como a máscara de sub-rede e o gateway padrão. As RFCs 2131 e 2132 definem o DHCP como um padrão de IETF (Força-Tarefa de Engenharia da Internet) com base no protocolo BOOTP, um protocolo com o qual o DHCP compartilha muitos detalhes de implementação. O DHCP permite que os hosts obtenham informações de configuração TCP/IP necessárias de um servidor DHCP.
+
+Cada dispositivo em uma rede baseada em TCP/IP deve ter um endereço IP unicast exclusivo para acessar a rede e seus recursos. Sem o DHCP, os endereços IP para novos computadores ou computadores que são movidos de uma sub-rede para outra devem ser configurados manualmente; Os endereços IP para computadores removidos da rede devem ser recuperados manualmente.
+
+Com o DHCP, todo esse processo é automatizado e gerenciado centralmente. O servidor DHCP mantém um pool de endereços IP e arrenda um endereço para qualquer cliente habilitado para DHCP quando ele é iniciado na rede. Como os endereços IP são dinâmicos (concessões) em vez de estáticos (atribuídos permanentemente), os endereços que não estão mais em uso são retornados automaticamente ao pool para realocação.
+
+Acesso à internet usando pat:
+
+Port Address Translation (PAT) ou NAT Overload
+
+O protocolo PAT é o protocolo normalmente utilizado nas empresas e residências, ele tem a mesma função do NAT porém ele utiliza Portas TCP/UDP para a tradução, assim possibilitando que vários endereços IP privados utilize um único endereço IP público.
+
+Com a utilização das portas, o mesmo endereço público poderá fazer um pouco mais de 65 mil traduções.
+
+No dia a dia do suporte, quando estamos falando sobre NAT muita das vezes estamos se referindo na verdade ao PAT.
+
+Acess e Trunk:
+
+Existe um mecanismo chamado VLAN trunk (ou entroncamento de VLAN), que possibilita que uma porta pertença a mais de uma VLAN. Quando uma porta de um switch é configurada em modo TRUNK, ela se torna capaz de enviar e receber quadros de múltiplas VLANs. 
+
+Vlans - Trunk utilizando protocolo 802.1q(dot1q):
+
+
+Devido ao crescimento e complexidade das redes informáticas, é muito comum nos dias de hoje que a rede física seja "dividida" em vários segmentos lógicos, denominadas de VLANs. Uma VLAN é basicamente uma rede lógica onde podemos agrupar várias máquinas de acordo com vários critérios (ex. grupos de utilizadores, por departamentos, tipo de tráfego, etc).
+
+As VLANs permitem a segmentação das redes físicas, sendo que a comunicação entre máquinas de VLANs diferentes terá de passar obrigatoriamente por um router ou outro equipamento capaz de realizar encaminhamento (routing), que será responsável por encaminhar o tráfego entre redes (VLANs) distintas. De referir ainda que uma VLAN define um domínio de broadcast (ou seja, um brodcast apenas chega aos equipamentos de uma mesma VLAN). As VLANs oferecem ainda outras vantagens das quais se destacam: segurança, escalabilidade, flexibilidade, redução de custos, etc.
+
+A partir da utilização de VLANs, uma estação não é capaz de comunicar-se com estações que não são pertencentes a mesma VLAN,  por isso utilizamos o Trunk. Se não utilizássemos uma interface como Trunk e precisássemos passar o tráfego da VLAN para o outro Switch, seria necessário a passagem de um cabo de cada VLAN para o outro dispositivo
+
+Pool de ip:
+
+An IP pool is a sequential range of IP addresses within a certain network. You can have multiple pool
+configurations. Each pool can have a priority and can be assigned to a group.
+IP addresses can be assigned dynamically from a single pool or from a group of pools. The Least
+Recently Used (LRU) method is used to assign IP addresses. In each pool, the addresses are placed in a
+queue. At the time of assigning, the address at the head of the queue is assigned, and when released is
+placed at the end of the queue.
+
+
+ips reservados: 
+
+porque descomentar as vlans:
+descomentar para ele esperar um dhcp
+
+
+
+defaul router:
+primeiro salto para fora da rede. Guardião dos portais do r1, liberação para fora da rede. Importante para o DHCP funcionar no default router.
+
+O default gateway, ou gateway padrão é a porta de entrada e de saída da rede. Ele é o roteador que possui o link de Internet e é o responsável por rotear o tráfego dos demais hosts da rede para a Internet e vice-versa. A menos que exista outra rota definida manualmente, todo o tráfego destinado a endereços fora da rede será encaminhado ao default gateway.
+
+
+Utilizamos dois formatos de pacote, 25 e 35. Para isso, precisamos multiplexar.
+
+Define-se multiplexação como sendo a tarefa de reunir pedaços de dados, vindos de diferentes portas (no hospedeiro de origem), encapsulando esses pedaços com o conjunto de campos para criar segmentos e entregá-los a camada de rede.
+
+No nosso caso, dividimos a interface(canal) logicamente em 2 espaços.
+
+1. Camada física
+Essa camada inclui o equipamento físico envolvido na transferência de dados, como cabos e comutadores. Essa também é a camada em que os dados são convertidos em um fluxo de bits, que é uma sequência de 1s e 0s. A camada física de ambos os dispositivos também precisa aceitar de comum acordo uma convenção de sinal para que se possa distinguir os 1s dos 0s em ambos os dispositivos.
+
+2. Camada de enlace de dados
+A camada de enlace de dados é muito semelhante à camada de rede, a não ser pelo fato de que a camada de enlace de dados facilita a transferência de dados entre dois dispositivos na MESMA rede. A camada de enlace de dados pega os pacotes da camada de rede e os divide em pedaços menores denominados "quadros". Como a camada de rede, a camada de enlace de dados também é responsável pelo controle de fluxo e pelo controle de erros na comunicação intrarrede (a camada de transporte faz o controle de fluxo e o controle de erros para comunicações inter-rede).
+
+3. Camada de Rede
+A camada de rede é responsável por facilitar a transferência de dados entre duas redes diferentes. Se os dois dispositivos que estão se comunicando estiverem na mesma rede, a camada de rede será desnecessária. A camada de rede divide os segmentos da camada de transporte em unidades menores denominadas pacotes no dispositivo remetente e remonta esses pacotes no dispositivo receptor. A camada de rede também encontra o melhor caminho físico para que os dados cheguem ao seu destino, o que é conhecido como "roteamento".
+
+
+
+
+https://pplware.sapo.pt/tutoriais/networking/redes-saiba-o-que-e-uma-vlan-e-aprenda-a-configurar/
+https://www.cisco.com/c/pt_br/support/docs/interfaces-modules/network-modules/82156-ether-switch-nm-config.html
+https://community.cisco.com/t5/routing/difference-between-isr-asr-and-multiservices-platform-routers/td-p/1188872
+https://docs.microsoft.com/pt-br/windows-server/networking/technologies/dhcp/dhcp-top
+https://www.4future.com.br/index.php/2021/03/11/acesso-a-internet-utilizando-nat-e-pat/
+https://moodle.ifsc.edu.br/mod/book/view.php?id=312208&chapterid=55576
+https://www.cisco.com/c/en/us/td/docs/net_mgmt/prime/network/4-2-3/user/guide/CiscoPrimeNetwork423UserGuide/ip-pool.pdf
+https://www.alura.com.br/artigos/como-configurar-dhcp-em-roteadores-cisco
